@@ -1,15 +1,14 @@
 import data from './jokes-en.json';
-import {House, BoxArrowInRight,Search,CameraVideoFill } from "react-bootstrap-icons";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import React from 'react';
-import { Navbar, Nav, Button, Container, } from 'react-bootstrap';
-import { Typeahead } from 'react-bootstrap-typeahead';
 import logo from './Mu.gif';
-import { useState, useRef } from 'react';
-import { InputGroup } from 'react-bootstrap';
+import {React, useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Navbar, Nav, Button, Container,InputGroup } from 'react-bootstrap';
+import { Typeahead } from 'react-bootstrap-typeahead';
+import {House, BoxArrowInRight,Search,Display } from "react-bootstrap-icons";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-bootstrap-typeahead/css/Typeahead.css';
 import "./Navbar.css";
-import { useNavigate } from 'react-router-dom';
+
 
 
 
@@ -23,16 +22,21 @@ function NavBar() {
     
     
     <Navbar className="styledNavbar" collapseOnSelect expand="sm" variant ="dark">
-        {/* key= true et expand = true permet de rendre la navbar mouvable peut importe la taille de l'écran*/}
-        {/* gap-md-5 permet d'afficher un gap de l'objet  pour les écran moyen et + */}
+        {/* expend = sm permet de rendre la navbar mouvable jusqu'au petit écran  le collapseOnselect et le navbar.toogle permettent de changer la disposition pour les petits écrans*/}
+        {/* p-2 p-md-0 permet d'afficher un gap de l'objet  pour les écran moyen et + */}
         
         <Container fluid>
+
+          {/* pour changer le logos */}
+          {/******************************************************************************/}
           <Navbar.Brand href="/" className= "styledBrand"><img src={logo} alt="My Gif" width="99%" height="99%" /></Navbar.Brand>
+          {/******************************************************************************/}
           <Navbar.Toggle as={Button} className='styledToggle' aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
           
+            {/* c'est la bar de recherche */}
+            {/******************************************************************************/}
             <Nav className="justify-content-center styledNav p-2 p-md-0">
-
               <div className="search-bar" >
                 <InputGroup className="search-bar-input-group">
                   <InputGroup.Text>
@@ -61,11 +65,13 @@ function NavBar() {
                 </InputGroup>
               </div>
             </Nav>
+            {/******************************************************************************/}
              
-            {/* on peut ajouter  */}
+            {/* ici on peut ajouter des onglets */}
+            {/******************************************************************************/}
             <Nav className="justify-content-end styledNav">
               <Nav.Link href="/search" >
-                <CameraVideoFill style={{ marginRight: '5px' }} className=" icon fs-2"/>
+                <Display style={{ marginRight: '5px' }} className=" icon fs-2"/>
                 Video
               </Nav.Link>
               <Nav.Link href="/" >
@@ -77,6 +83,7 @@ function NavBar() {
                 Connection
               </Nav.Link>
             </Nav>
+            {/******************************************************************************/}
           </Navbar.Collapse>
         </Container>
     
