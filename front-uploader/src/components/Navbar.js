@@ -1,80 +1,94 @@
-// components/Navbar.js
-//import data from './jokes-en.json';
-import { List, House, BoxArrowInRight,Search } from "react-bootstrap-icons";
+import data from './jokes-en.json';
+import {House, BoxArrowInRight,Search,CameraVideoFill } from "react-bootstrap-icons";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Navbar, Nav, Form, FormControl, Button,Dropdown } from 'react-bootstrap';
+import { Navbar, Nav, Button, Container, } from 'react-bootstrap';
+import { Typeahead } from 'react-bootstrap-typeahead';
+import logo from './Mu.gif';
+import { useState, useRef } from 'react';
+import { InputGroup } from 'react-bootstrap';
+import 'react-bootstrap-typeahead/css/Typeahead.css';
+import "./Navbar.css";
+import { useNavigate } from 'react-router-dom';
 
 
-const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
-  <button
-    href=""
-    ref={ref}
-    onClick={(e) => {
-      e.preventDefault();
-      onClick(e);
-    }}
-    style={{ background: "none", border: "none" }}
-  >
-    {children}
-  </button>
-));
 
+function NavBar() {
 
-function NavigationBar() {
+  const navigate = useNavigate();
+  const typeaheadRef = useRef();
+  const [searchInput, setSearchInput] = useState([]);
+ 
   return (
     
-    <Navbar key={true} expand={true} className="bg-body-tertiary p-2" data-bs-theme="dark">
+    
+    <Navbar className="styledNavbar" collapseOnSelect expand="sm" variant ="dark">
+        {/* key= true et expand = true permet de rendre la navbar mouvable peut importe la taille de l'écran*/}
+        {/* gap-md-5 permet d'afficher un gap de l'objet  pour les écran moyen et + */}
         
-        <Navbar.Collapse id="basic-navbar-nav" className="gap-md-5">
-          <Navbar.Brand as={Link} to="/">My uploader</Navbar.Brand>
+        <Container fluid>
+          <Navbar.Brand href="/" className= "styledBrand"><img src={logo} alt="My Gif" width="99%" height="99%" /></Navbar.Brand>
+          <Navbar.Toggle as={Button} className='styledToggle' aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+          
+            <Nav className="justify-content-center styledNav p-2 p-md-0">
 
-
-          <Nav>
-            <Form inline className="d-flex align-items-center">
-              <FormControl type="text" placeholder="Search" className="d-none d-md-block"/>
-              <Button variant="outline-info" className="d-none d-md-block">
-                <Search/>
-              </Button>
-            </Form> 
-          </Nav>
-        </Navbar.Collapse>    
-        <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
-
-          <Nav>
-            <Nav.Link as={Link} to="/" className="d-none d-md-block">
-              <House style={{ color: 'white', marginRight: '5px' }} className="fs-2"/>
-              Home
-            </Nav.Link>
-            
-            <Nav.Link as={Link} to="/login" className="d-none d-md-block">
-              <BoxArrowInRight style={{ color: 'white', marginRight: '5px'}} className="fs-2"/>
-              Connection
-            </Nav.Link>
-          </Nav>
-
-          <Dropdown className="d-block d-md-none">
-            <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
-              <List className="fs-2 "/>
-            </Dropdown.Toggle>
-            <Dropdown.Menu  align={{ lg: 'start' }}>
-              <Dropdown.Item>
-                <Form inline className="d-flex align-items-center" onClick={(e) => e.stopPropagation()}>
-                  <FormControl type="text" placeholder="Search" />
-                </Form> 
-              </Dropdown.Item>
-              <Dropdown.Item as={Link} to="/"><House className="fs-2"/></Dropdown.Item>
-              <Dropdown.Item as={Link} to="/login"><BoxArrowInRight className="fs-2"/></Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>        
-        </Navbar.Collapse>
+              <div className="search-bar" >
+                <InputGroup className="search-bar-input-group">
+                  <InputGroup.Text>
+                    <Search />
+                  </InputGroup.Text>
+                  <Typeahead
+                    ref={typeaheadRef}
+                    id="basic-typeahead-example"
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') {
+                        navigate(`/search/${e.target.value}`);
+                        typeaheadRef.current.clear();  
+                      }
+                    }}
+                    onChange={(selected) => {
+                      setSearchInput(selected);
+                      if (selected.length > 0) {
+                        navigate(`/video/${selected[0].label}`);
+                        setSearchInput([]);
+                      }
+                    }}
+                    options={data.data}
+                    placeholder=""
+                    selected={searchInput}
+                  />
+                </InputGroup>
+              </div>
+            </Nav>
+             
+            {/* on peut ajouter  */}
+            <Nav className="justify-content-end styledNav">
+              <Nav.Link href="/search" >
+                <CameraVideoFill style={{ marginRight: '5px' }} className=" icon fs-2"/>
+                Video
+              </Nav.Link>
+              <Nav.Link href="/" >
+                <House style={{ marginRight: '5px' }} className="icon fs-2"/>
+                Home
+              </Nav.Link>
+              <Nav.Link href="/login" >
+                <BoxArrowInRight style={{ marginRight: '5px'}} className="icon fs-2"/>
+                Connection
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+    
     </Navbar>
-        
-      
+              
     
   );
 }
 
-export default NavigationBar;
+export default NavBar;
+
+
+
+
 
