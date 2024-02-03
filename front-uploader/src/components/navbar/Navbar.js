@@ -1,4 +1,4 @@
-import data from './jokes-en.json';
+import data from '../../database/video.json';
 import logo from './Mu.gif';
 import {React, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -54,10 +54,11 @@ function NavBar() {
                     onChange={(selected) => {
                       setSearchInput(selected);
                       if (selected.length > 0) {
-                        navigate(`/video/${selected[0].label}`);
+                        navigate(`/video/${selected[0].name}`);
                         setSearchInput([]);
                       }
                     }}
+                    labelKey="name"
                     options={data.data}
                     placeholder=""
                     selected={searchInput}
