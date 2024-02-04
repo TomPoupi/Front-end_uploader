@@ -4,29 +4,22 @@
             "name":"video1",
             "date":"2021-02-03T12:03:05+01:00",
             "description":"c'est une super video",
-            "path_file":"D:\\Codage_projet_et_perso\\Project_upload\\FRONT-react\\front-uploader\\src\\database\\video1.mp4",
-            "path_image":"D:\\Codage_projet_et_perso\\Project_upload\\FRONT-react\\front-uploader\\src\\database\\image_video1.jpg"
+            "path_file":"https://www.youtube.com/watch?v=X7d2d1_NhB8&t=1s",
+            "path_image":"https://i.ytimg.com/vi/X7d2d1_NhB8/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDwNLislLAaytjwwfdz-FPWPGd13Q"
         },
         {
             "name":"video2",
             "date":"2022-02-03T12:03:19+01:00",
             "description":"c'est une super video2",
-            "path_file":"D:\\Codage_projet_et_perso\\Project_upload\\FRONT-react\\front-uploader\\src\\database\\video2.mp4",
-            "path_image":"D:\\Codage_projet_et_perso\\Project_upload\\FRONT-react\\front-uploader\\src\\database\\image_video2.jpg"
+            "path_file":"https://www.youtube.com/watch?v=2sPlEYePeJ0",
+            "path_image":"https://i.ytimg.com/vi/2sPlEYePeJ0/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBZNvsaOd8gxteqPw7RoITVdumsuQ"
         },
         {
             "name":"video3",
             "date":"2023-02-03T12:03:19+01:00",
             "description":"c'est une super video3",
-            "path_file":"D:\\Codage_projet_et_perso\\Project_upload\\FRONT-react\\front-uploader\\src\\database\\video3.mp4",
-            "path_image":"D:\\Codage_projet_et_perso\\Project_upload\\FRONT-react\\front-uploader\\src\\database\\image_video3.jpg"
-        },
-        {
-            "name":"video4",
-            "date":"2024-02-03T12:03:19+01:00",
-            "description":"c'est une super video4",
-            "path_file":"D:\\Codage_projet_et_perso\\Project_upload\\FRONT-react\\front-uploader\\src\\database\\video4.mp4",
-            "path_image":"D:\\Codage_projet_et_perso\\Project_upload\\FRONT-react\\front-uploader\\src\\database\\image_video4.jpg"
+            "path_file":"https://www.youtube.com/watch?v=2sPlEYePeJ0",
+            "path_image":"https://i.ytimg.com/vi/vhl99FtU_vA/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBQqg6OOJGo99NpMKVST__vVPbjww"
         }
     ]
 }

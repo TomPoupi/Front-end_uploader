@@ -1,0 +1,21 @@
+.styledCarouselDiv{
+    display: flex;
+    max-height: '200px';
+
+}
+
+.styledCarouselImage{
+    flex: 50;
+    border-radius: '25px';
+}
+
+.styledCarouselCard {
+    flex: 50;
+    position: relative;
+    left: 0;
+    right: 0; 
+    bottom: 0;
+    color: white;
+    padding: 10px;  
+    width: 30%;
+}
